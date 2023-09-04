@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Liste;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ListeController extends Controller
 {
    public function index()
    {
+      $user = Auth::user();
+      $nom = $user ? $user->firstname :"";
+      $prenom = $user ? $user->lastname: "";
       $liste_etudiants = Liste::all();
-      return view('liste', compact('liste_etudiants'));
+      return view('liste', compact('liste_etudiants', 'prenom'));
    }
 
    public function add($id)
@@ -56,7 +60,8 @@ class ListeController extends Controller
          "birthday" => $data['birthday'],
          "hobbies" => $data['hobbies'],
          "bio" => $data['bio'],
-         "photo" => $path  
+         "photo" => $path,
+         'user_id' => Auth::user()->id
      ]);
       return redirect()->route('index')->with('message', 'Nouvel ajout efféctué !');
    }

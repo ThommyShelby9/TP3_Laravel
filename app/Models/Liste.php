@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Liste extends Model
 {
-    protected $fillable = ["name", "surname", "speciality", "birthday", "hobbies", "photo", "bio"];
+    protected $fillable = ["name", "surname", "speciality", "birthday", "hobbies", "photo", "bio", "user_id"];
     protected $table = "etudiant_liste";
     use SoftDeletes;
 }
