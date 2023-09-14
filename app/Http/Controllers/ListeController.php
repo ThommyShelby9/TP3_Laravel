@@ -14,7 +14,7 @@ class ListeController extends Controller
       $nom = $user ? $user->firstname :"";
       $prenom = $user ? $user->lastname: "";
       $liste_etudiants = Liste::all();
-      return view('liste', compact('liste_etudiants', 'prenom'));
+      return view('liste', compact('liste_etudiants', 'prenom', 'nom'));
    }
 
    public function add($id)

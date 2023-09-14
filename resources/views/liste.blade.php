@@ -11,13 +11,16 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        <span>Bienvenue {{$prenom}}</span>
         <a href="{{ route('addEtudiant') }}">
             <button class="btn btn-primary  mt-3">Ajouter</button>
         </a>
         <a href="{{ route('cours') }}">
             <button class="btn btn-primary  mt-3">Gestion des cours</button>
         </a>
+        <a href="{{route('see_teacher')}}">
+            <button class="btn btn-primary  mt-3">Gestion des enseignants</button>
+        </a>
+        <span>Bienvenue {{$nom}}</span>
         <table class="table table-striped-columns mt-5">
             <thead>
                 <tr>

@@ -14,10 +14,10 @@ class UpdateCoursForeignAdd extends Migration
     public function up()
     {
         Schema::table('cours', function(Blueprint $table){
-            $table->foreignId('categorie_id')->nullable()
+            $table->foreignId('category_id')->nullable()
             ->onUpdate('cascade')
             ->onDelete('cascade')
-            ->constrained('category');
+            ->constrained('category', 'id_category');
         });
     }
 

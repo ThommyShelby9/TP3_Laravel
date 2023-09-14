@@ -17,8 +17,23 @@
             </div>
         </nav>
     </header>
+    @if ($errors->any())
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>
+                    {{ $error }}
+                </li>
+            @endforeach
+        </ul>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+    @yield('content')
+    
 </body>
-@yield('content')
+
+
 <script src="asset('js/bootstrap.min.js')"></script>
 
 </html>
@@ -52,7 +67,6 @@
         justify-content: center;
         align-items: center;
         box-shadow: 0 0 5px #000000;
-        border-radius: 20px;
         gap: 20px;
         padding: 20px;
     }
@@ -60,7 +74,8 @@
     #objet,
     #hobbies,
     #photo,
-    #image {
+    #image,
+    #address {
         width: 100%;
         border-radius: 10px;
         height: 40px;

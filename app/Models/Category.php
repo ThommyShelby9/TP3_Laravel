@@ -9,4 +9,9 @@ class Category extends Model
 {
     protected $fillable = ["id_category", "nom_category", "user_id"];
     protected $table = "category";
+
+
+    public function cours_liste(){
+        return $this->hasMany(Cours::class, 'category_id', 'id_category');
+    }
 }

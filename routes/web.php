@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\AffectationController;
+use App\Http\Controllers\AtributtionController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CoursController;
 use App\Http\Controllers\ListeController;
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -71,5 +74,28 @@ Route::controller(CoursController::class)->prefix('cours')->group(function () {
 
     Route::get('/addCourse', 'course_view')->name('course_view');
 
-    Route::post('/addCourse', 'addCourse')->name('addCourse');
+    Route::post('/add_course/addCourse', 'add_course')->name('addCourse');
+});
+
+Route::controller(AtributtionController::class)->prefix('attribute')->group(function(){
+
+    Route::get('/attribution_cours', 'see_attribution')->name('view_attribution');
+
+    Route::post('/attribution_cours', 'get_attribute')->name('get_attribute');
+});
+
+Route::controller(TeacherController::class)->prefix('teacher')->group(function(){
+
+    Route::get('/teacher', 'see_teacher')->name('see_teacher');
+
+    Route::get('/teacher_form', 'see_teacher_form')->name('see_teacher_form');
+
+    Route::post('/send_teacher/teacher', 'send_teacher')->name('send_teacher');
+
+    Route::get('/affectation/{id}', 'set_affect')->name('affectation');
+
+});
+
+Route::controller(AffectationController::class)->prefix('affectations')->group(function(){
+    Route::post('/affectation/{id}', 'get_affectation')->name('get_affectation');
 });

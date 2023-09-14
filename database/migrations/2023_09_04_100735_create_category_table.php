@@ -15,7 +15,7 @@ class CreateCategoryTable extends Migration
     {
         Schema::create('category', function (Blueprint $table) {
             $table->id('id_category');
-            $table->string('nom_category');
+            $table->string('nom_category')->nullable();
             $table->timestamps();
         });
     }
